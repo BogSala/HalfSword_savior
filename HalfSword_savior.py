@@ -187,7 +187,6 @@ def load_save(selected_save_name=None, auto_load_latest=False):
         print(f"Error loading save: {e}")
 
 def delete_saves():
-    """Deletes one or more selected saves from the subfolder."""
     available_saves = list_saves()
     if not available_saves:
         return
@@ -239,7 +238,6 @@ def delete_saves():
 
 
 def main_menu():
-    """Main menu for user interaction."""
     while True:
         print("\n--- Game Save Manager ---")
         print("1. Create new save")
