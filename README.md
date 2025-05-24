@@ -20,7 +20,7 @@ A simple Python script (`HalfSword_savior.py`) to manage your HalfSword game sav
 2.  **Configuration:** Open the `HalfSword_savior.py` file with a text editor (like Notepad, VS Code, Sublime Text).
     * Ensure the `SAVE_FOLDER_PATH` variable is correctly set to your HalfSword save game directory. The default path is usually:
         ```python
-        SAVE_FOLDER_PATH = os.path.join(os.path.expanduser("~"), r"AppData\Local\HalfSwordUE5\Saved\SaveGames")
+        C:\Users\username\AppData\Local\HalfSwordUE5\Saved\SaveGames
         ```
         You typically won't need to change this unless your game saves are in a non-standard location.
     * Confirm `ORIGINAL_SAVE_FILENAME` is set to `"SG Gauntlet Progress.sav"`.
