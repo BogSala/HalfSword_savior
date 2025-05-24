@@ -56,7 +56,7 @@ def delete_saves():
                 print("No valid save numbers entered. Please try again.")
                 continue
 
-            saves_to_delete = sorted(list(set(valid_choices)), reverse=True) # Use set to remove duplicates, sort for safe deletion
+            saves_to_delete = sorted(list(set(valid_choices)), reverse=True)
             
             confirm = input(f"Are you sure you want to delete these saves: {', '.join([available_saves[i-1] for i in saves_to_delete])}? (yes/no): ").lower()
             if confirm == 'yes':
@@ -108,7 +108,6 @@ def create_new_save(custom_name=None):
         print(f"Error creating new save: {e}")
 
 def get_sorted_saves_by_modification_time():
-    """Returns a list of .sav files in the subfolder, sorted by modification time (newest at the end)."""
     backup_folder = get_backup_folder_path()
     saves = [f for f in os.listdir(backup_folder) if f.endswith(".sav")]
     
@@ -125,7 +124,6 @@ def get_sorted_saves_by_modification_time():
 
 
 def list_saves():
-    """Displays a list of all available saves (.sav files) in the subfolder."""
     sorted_saves = get_sorted_saves_by_modification_time()
 
     if not sorted_saves:
@@ -138,10 +136,6 @@ def list_saves():
     return sorted_saves
 
 def load_save(selected_save_name=None, auto_load_latest=False):
-    """
-    Loads the selected save from the subfolder, replacing the current save file.
-    If selected_save_name is not provided, loads the latest save (if auto_load_latest=True).
-    """
     available_saves = get_sorted_saves_by_modification_time()
     if not available_saves:
         print("No saves to load.")
@@ -215,19 +209,19 @@ def delete_saves():
                     selected_indices.append(index)
                 else:
                     print(f"Invalid number '{item}'. Please try again.")
-                    selected_indices = [] # Reset selection if any invalid number
+                    selected_indices = []
                     break
             
             if selected_indices:
                 break
-            elif choice.strip(): # If choice was not empty but no valid indices
+            elif choice.strip():
                 print("No valid save numbers entered. Please try again.")
 
         except ValueError:
             print("Invalid input. Please enter numbers separated by commas or 'q'.")
     
     deleted_count = 0
-    for index in sorted(list(set(selected_indices)), reverse=True): # Process unique indices from largest to smallest
+    for index in sorted(list(set(selected_indices)), reverse=True):
         save_to_delete_name = available_saves[index]
         save_to_delete_full_path = get_backup_save_path(save_to_delete_name)
         
@@ -263,9 +257,9 @@ def main_menu():
             load_save(auto_load_latest=False)
         elif choice == '3':
             list_saves()
-        elif choice == '4': # <-- NEW OPTION
+        elif choice == '4':
             delete_saves()
-        elif choice == '5': # <-- UPDATED OPTION NUMBER
+        elif choice == '5':
             print("Thank you for using the Save Manager!")
             break
         elif not choice:
