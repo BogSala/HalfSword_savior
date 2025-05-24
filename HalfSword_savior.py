@@ -30,7 +30,7 @@ def get_backup_save_path(filename):
 
 def generate_unique_save_name():
     now = datetime.datetime.now()
-    return now.strftime("auto_%Y-%m-%d_%H:%M.sav")
+    return now.strftime("auto_%Y-%m-%d_%H-%M.sav")
 
 def delete_saves():
     available_saves = list_saves()
